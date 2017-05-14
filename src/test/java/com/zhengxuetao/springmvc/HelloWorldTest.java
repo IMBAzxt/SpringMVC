@@ -26,6 +26,8 @@ public class HelloWorldTest {
         ApplicationContext contex = new ClassPathXmlApplicationContext("spring.xml");
         HelloWorld instance = contex.getBean("hello", HelloWorld.class);
         instance.sayHello();
+        HelloWorld1 instance1 = contex.getBean("hello1", HelloWorld1.class);
+        instance1.sayHello();
     }
 
 }
