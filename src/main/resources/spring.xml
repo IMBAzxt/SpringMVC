@@ -8,5 +8,4 @@ http://www.springframework.org/schema/beans        http://www.springframework.or
 http://www.springframework.org/schema/context                http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <!-- id 表示你这个组件的名字，class表示组件类 -->
     <import resource="hello.xml"/>
-    <import resource="hello1.xml"/>
 </beans>

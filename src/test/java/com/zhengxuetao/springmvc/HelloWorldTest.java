@@ -24,10 +24,14 @@ public class HelloWorldTest {
     @Test
     public void testSayHello() {
         ApplicationContext contex = new ClassPathXmlApplicationContext("spring.xml");
-        HelloWorld instance = contex.getBean("hello", HelloWorld.class);
+        HelloWorld instance;
+        instance = contex.getBean("hello1", HelloWorldImpl1.class);
         instance.sayHello();
-        HelloWorld1 instance1 = contex.getBean("hello1", HelloWorld1.class);
-        instance1.sayHello();
+        System.out.println("测试lazy-init,使用时间：" + String.valueOf(System.currentTimeMillis()));
+        instance = contex.getBean("hello", HelloWorldImpl.class);
+        instance.sayHello();
+        instance = contex.getBean("hello2", HelloWorldImpl2.class);
+        instance.sayHello();
     }
 
 }

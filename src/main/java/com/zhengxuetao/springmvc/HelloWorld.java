@@ -5,17 +5,11 @@
  */
 package com.zhengxuetao.springmvc;
 
-import org.slf4j.LoggerFactory;
-
 /**
  *
  * @author zhengxt
  */
-public class HelloWorld {
+public interface HelloWorld {
 
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(HelloWorld.class);
-
-    public void sayHello() {
-        logger.info("Hello world");
-    }
+    public void sayHello();
 }
