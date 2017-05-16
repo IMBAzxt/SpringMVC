@@ -3,9 +3,12 @@
     xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
     xsi:schemaLocation="
-http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-http://www.springframework.org/schema/context                http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     <!-- id 表示你这个组件的名字，class表示组件类 -->
     <bean id="hello" class="com.zhengxuetao.springmvc.HelloWorldImpl" depends-on="hello2"  lazy-init="true">
         <property name="hello2">
@@ -20,4 +23,12 @@ http://www.springframework.org/schema/context                http://www.springfr
             <value>test property di</value>
         </property>
     </bean>
+    <bean id="aspect" class="com.zhengxuetao.springmvc.HelloAspect"/>
+    <aop:config >
+        <aop:pointcut id="pointcut" expression="execution(* com.zhengxuetao.springmvc.HelloWorldImpl2.sayHello(..))"/>
+        <aop:aspect ref="aspect">
+            <aop:before pointcut-ref="pointcut" method="beforeAspect"/>
+            <aop:after pointcut-ref="pointcut" method="afterAspect"/>
+        </aop:aspect>
+    </aop:config>
 </beans>
